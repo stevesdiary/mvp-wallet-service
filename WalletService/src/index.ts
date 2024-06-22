@@ -5,8 +5,8 @@ import { AppDataSource } from "./data-source";
 import express from "express";
 import userRoute from "./route/userRoute";
 import accountRoute from './route/accountRoute';
-
 const app = express();
+app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(userRoute);
