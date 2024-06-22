@@ -3,9 +3,14 @@ import "reflect-metadata";
 import * as bodyParser from "body-parser";
 import { AppDataSource } from "./data-source";
 import express from "express";
+import userRoute from "./route/userRoute";
+import accountRoute from './route/accountRoute';
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(userRoute);
+app.use(accountRoute);
 
 const port = process.env.LOCAL_PORT || 8888;
 
