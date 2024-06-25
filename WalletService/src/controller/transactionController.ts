@@ -12,7 +12,7 @@ interface TransactionCreationData {
   senderAccountNumber: string;
   date: any;
 }
-//const (Create transaction outside and call the function in the )
+
 const transactionController = {
   create: async (req: Request, res: Response): Promise<Response> => {
     try {
