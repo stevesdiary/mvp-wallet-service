@@ -10,10 +10,13 @@ export class Transaction {
   amount: number
 
   @Column()
-  userId: string
+  transactionType: string
 
   @Column()
-  accountId: string
+  senderAccountNumber: string
+
+  @Column()
+  recipientAccountNumber: string
 
   @Column()
   date: Date
