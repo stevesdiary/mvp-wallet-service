@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
-import { Account } from "../entity/Account";
 import bcrypt from "bcryptjs";
 
 const userRepository = AppDataSource.manager.getRepository(User);
-const accountRepository = AppDataSource.manager.getRepository(Account)
 
 const userController = {
   getOne: async (req: Request, res: Response) => {
