@@ -4,13 +4,15 @@ import * as bodyParser from "body-parser";
 import { AppDataSource } from "./data-source";
 import express from "express";
 import userRoute from "./route/userRoute";
-import accountRoute from './route/accountRoute';
+import accountRoute from './route/loginRoute';
+import transactionRoute from "./route/transactionRoute";
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(userRoute);
 app.use(accountRoute);
+app.use(transactionRoute);
 
 const port = process.env.LOCAL_PORT || 8888;
 
