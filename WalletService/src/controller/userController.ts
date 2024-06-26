@@ -41,20 +41,14 @@ const userController = {
       }
       const accountNumber = generateAccountNumber();
 
-      const filePath = path.join(__dirname, '../blackList.txt');
-
-    // Read the file content
-    const data = await fs.readFile(filePath, 'utf-8');
-
-    // Split and trim the file content to get the list of emails
-    const emailList:string[] = data.split('\n').map(e => e.trim());
-
-    // Check if the email exists in the list
-    // const emailExists = emailList.includes(email);
-      // console.log("RESponse DAta", emailList);
+      const url = 'https://667c1dfd3c30891b865b6308.mockapi.io/emails'
       
+      const filePath = path.join(__dirname, '../blackList.txt');
+      const data = await fs.readFile(filePath, 'utf-8');
+      const emailList:string[] = data.split('\n').map(e => e.trim());
+        
       const emailExists = emailList.includes(email);
-      console.log("Email exist", emailExists);
+      // console.log("Email exist", emailExists);
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const existingUser = await userRepository.findOne({ where: { email } })
@@ -66,10 +60,6 @@ const userController = {
         return res.status(400).json({ message: `User ${email} cannot be registered because it is in blackList` })
       }
 
-
-      // if (userType.email isIn 'Blacklist') {
-      //   return res.status(403).json({ message: `User cannot be onboarded because ${email} has beeen blacklisted`})
-      // }
       const user: UserCreationData = {
         firstName,
         email,
