@@ -41,14 +41,17 @@ const userController = {
       }
       const accountNumber = generateAccountNumber();
 
-      const url = 'https://667c1dfd3c30891b865b6308.mockapi.io/emails'
-      
-      const filePath = path.join(__dirname, '../blackList.txt');
-      const data = await fs.readFile(filePath, 'utf-8');
-      const emailList:string[] = data.split('\n').map(e => e.trim());
+      const url = process.env.BLACKLIST_API || "url";
+      const response = await fetch(url);
+      if(!response.ok) { 
+        throw new Error ("Response was not ok. Could not retrieve emails from blacklist")
+      }
+      const blackList = await response.json();
+
+      const emailList = blackList.map((item: { email: string }) => item.email);
         
       const emailExists = emailList.includes(email);
-      // console.log("Email exist", emailExists);
+      console.log("Email exist", emailExists);
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const existingUser = await userRepository.findOne({ where: { email } })
