@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
 import bcrypt from "bcryptjs";
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const userRepository = AppDataSource.manager.getRepository(User);
 
@@ -22,6 +24,7 @@ const userController = {
 
   create: async (req: Request, res: Response): Promise<Response> => {
     try {
+      const { firstName, email, userType, password } = req.body;
       interface UserCreationData {
         firstName: string;
         email: string;
@@ -29,22 +32,44 @@ const userController = {
         password: string;
         accountNumber: string;
       }
-      function generateRandomAccountNumber() {
+      function generateAccountNumber() {
         let accountNumber = '';
         for (let i = 0; i < 10; i++) {
           accountNumber += Math.floor(Math.random() * 10);
         }
         return accountNumber;
       }
-      const accountNumber = generateRandomAccountNumber();
-      const { firstName, email, userType, password } = req.body;
+      const accountNumber = generateAccountNumber();
+
+      const filePath = path.join(__dirname, '../blackList.txt');
+
+    // Read the file content
+    const data = await fs.readFile(filePath, 'utf-8');
+
+    // Split and trim the file content to get the list of emails
+    const emailList:string[] = data.split('\n').map(e => e.trim());
+
+    // Check if the email exists in the list
+    // const emailExists = emailList.includes(email);
+      // console.log("RESponse DAta", emailList);
+      
+      const emailExists = emailList.includes(email);
+      console.log("Email exist", emailExists);
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const existingUser = await userRepository.findOne({ where: { email } })
-
-      console.log('Existing User:', existingUser);
+      
       if (existingUser) {
         return res.status(400).json({ message: `User profile already exist for ${email}` })
       }
+      if (emailExists) {
+        return res.status(400).json({ message: `User ${email} cannot be registered because it is in blackList` })
+      }
+
+
+      // if (userType.email isIn 'Blacklist') {
+      //   return res.status(403).json({ message: `User cannot be onboarded because ${email} has beeen blacklisted`})
+      // }
       const user: UserCreationData = {
         firstName,
         email,
@@ -60,7 +85,6 @@ const userController = {
     } catch (error) {
       console.log(error)
       return res.status(500).json({ message: "Something went wrong!", error })
-
     }
   },
 
@@ -117,6 +141,5 @@ const userController = {
     }
   }
 };
-
 
 export default userController;
