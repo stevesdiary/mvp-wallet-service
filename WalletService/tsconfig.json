@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES2017",
+    "target": "es2017",
     "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
@@ -9,7 +9,10 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true,
   },
   "include": [
     "src/**/*.ts"
