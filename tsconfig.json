@@ -6,7 +6,7 @@
     "rootDir": "./src",
     "typeRoots": ["./node_modules/@types"],
     "strict": true,
-    // "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true,
     // "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
