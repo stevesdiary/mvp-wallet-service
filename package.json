@@ -4,7 +4,7 @@
   "description": "MVP wallet service",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && ls dist",
+    "build": "tsc && ls build",
     "start": "node build/index.js",
     "test": "jest"
   },
