@@ -10,6 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
+app.get("", (req, res) => {
+	return res.status(200).send("Welcome to my simple loan application.");
+})
 app.use(userRoute);
 app.use(accountRoute);
 app.use(transactionRoute);
