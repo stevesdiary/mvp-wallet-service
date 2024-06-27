@@ -34,5 +34,4 @@ export class User {
   accountNumber: string
   Unique: true;
   userRepository: any;
-
 }
