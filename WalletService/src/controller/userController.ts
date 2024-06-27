@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
 import bcrypt from "bcryptjs";
-import { promises as fs } from 'fs';
-import path from 'path';
 
 const userRepository = AppDataSource.manager.getRepository(User);
 
@@ -51,7 +49,6 @@ const userController = {
       const emailList = blackList.map((item: { email: string }) => item.email);
         
       const emailExists = emailList.includes(email);
-      console.log("Email exist", emailExists);
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const existingUser = await userRepository.findOne({ where: { email } })
@@ -73,7 +70,6 @@ const userController = {
 
       const newUser = userRepository.create(user);
       await userRepository.save(newUser);
-      // if(!newUser.firstName){ return res.status(400).json({message: 'user not created'})}
       return res.status(201).json({ message: 'User created', user })
     } catch (error) {
       console.log(error)
