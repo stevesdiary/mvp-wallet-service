@@ -2,6 +2,7 @@ require("dotenv").config();
 import "reflect-metadata";
 import * as bodyParser from "body-parser";
 import { AppDataSource } from "./data-source";
+import {Request, Response} from "express";
 import express from "express";
 import userRoute from "./route/userRoute";
 import accountRoute from './route/loginRoute';
@@ -10,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.get("", (req, res) => {
+app.get("/", (req:Request, res: Response) => {
 	return res.status(200).send("Welcome to my simple loan application.");
 })
 app.use(userRoute);
