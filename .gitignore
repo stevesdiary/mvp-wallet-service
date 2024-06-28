@@ -1,5 +1,8 @@
 node_modules
 dist/
 build/
-
+.vscode/settings.json
+.vscode
 .env
+src/.DS_Store
+.vscode/settings.json
