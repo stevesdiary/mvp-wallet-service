@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "module": "commonjs",
-    "outDir": "./build",
+    "outDir": "./build/src",
     "rootDir": "./src",
     "typeRoots": ["./node_modules/@types"],
     "strict": true,
