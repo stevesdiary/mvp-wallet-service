@@ -4,8 +4,8 @@
   "description": "MVP wallet service",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && node logBuild.js",
-    "start": "echo 'Starting application...' && node build/index.js",
+    "clean": "rm -rf node_modules build",
+    "build": "npm run clean && npm install && tsc && node logBuild.js",
     "test": "jest"
   },
   "repository": {
