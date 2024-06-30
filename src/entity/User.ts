@@ -6,32 +6,31 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column()
+  @Column({nullable: false})
   @IsString()
   @IsNotEmpty()
   firstName: string
 
-  @Column()
+  @Column({nullable: false, unique: true})
   @IsEmail()
   @IsNotEmpty()
   email: string
 
-  @Column()
+  @Column({nullable: false, enum: ["user", "admin"]})
   @IsString()
   @IsNotEmpty()
   userType: string
 
-  @Column()
+  @Column({select: false})
   @IsAlphanumeric()
   password: string
 
-  @Column()
+  @Column({nullable: true})
   @IsNumber()
   balance: number
 
-  @Column()
+  @Column({nullable: false, unique: true})
   @IsNotEmpty()
   accountNumber: string
-  Unique: true;
   userRepository: any;
 }
