@@ -9,16 +9,16 @@ export class Transaction {
   @Column()
   amount: number
 
-  @Column()
+  @Column({enum: ["credit", "debit"], nullable: false})
   transactionType: string
 
-  @Column()
+  @Column({nullable: false})
   senderAccountNumber: string
 
   @Column()
   recipientAccountNumber: string
 
-  @Column()
+  @Column({nullable: false})
   date: Date
 
   @CreateDateColumn()
