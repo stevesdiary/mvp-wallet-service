@@ -89,7 +89,7 @@ const userController = {
 
   updateUser: async (req: Request, res: Response) => {
     try {
-      const { firstName, userType, password } = req.body;
+      const { firstName, userType, password, email } = req.body;
       const id = req.params.id;
       function generateRandomAccountNumber() {
         let accountNumber = '';
@@ -105,6 +105,7 @@ const userController = {
       }
       if (firstName) user.firstName = firstName;
       if (accountNumber) user.accountNumber = accountNumber; 
+      if (email) user.email = email;
       if (userType) user.userType = userType;
       if (password) {
         const hashedPassword = await bcrypt.hash(password, 10);
