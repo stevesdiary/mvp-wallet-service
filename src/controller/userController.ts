@@ -122,9 +122,11 @@ const userController = {
   deleteUser: async (req: Request, res: Response): Promise<Response> => {
     try {
       const id = req.params.id;
+      const findUser = await userRepository.findOneBy({ id });
       const deleteUser = await userRepository.delete({ id });
-      if (!deleteUser) { return res.status(404).json({ message: 'Record not deleted' }) }
-      return res.status(200).json({ message: 'Record deleted successfully' })
+      if (!findUser){ return res.status(404).json({ message: `Record not found for ${id}` })}
+      if (!deleteUser) { return res.status(400).json({ message:  `User was not deleted` }) }
+      return res.status(200).json({ message: 'Record deleted successfully....' })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ message: 'Error occured', error })
