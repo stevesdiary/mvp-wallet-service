@@ -17,7 +17,6 @@ const transactionController = {
   create: async (req: Request, res: Response): Promise<Response> => {
     try {
       const { senderAccountNumber, transactionType, amount, recipientAccountNumber } = req.body;
-
       const transaction: TransactionCreationData = {
         transactionType,
         senderAccountNumber,
@@ -120,7 +119,7 @@ const transactionController = {
         transactionType: 'debit',
         senderAccountNumber,
         recipientAccountNumber: '',
-        amount: - amount,
+        amount: amount,
         date: new Date(),
       }
       const newDebitTransaction = transactionRepository.create(debitTransaction);
@@ -134,9 +133,14 @@ const transactionController = {
 
   getAll: async (req: Request, res: Response): Promise<Response> => {
     try {
-      const alltransactions = await transactionRepository.find()
-      if (!alltransactions || alltransactions == null) {
-        return res.status(404).json({ message: 'No transaction records found' })
+      const transactionType = req.query.transactionType as string;
+      let whereCondition: any = {};
+      if ( transactionType){
+        whereCondition = {where: {transactionType: transactionType}}
+      }
+      const alltransactions = await transactionRepository.find( whereCondition );
+      if (!alltransactions ) {
+        return res.status(404).json({ message: 'No transaction record found' })
       }
       return res.status(200).json({ message: 'Got all transactions', alltransactions })
     } catch (error) {

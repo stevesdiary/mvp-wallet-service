@@ -1,22 +1,22 @@
 import { IsAlphanumeric, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Unique } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+// import { Transaction } from "./Transaction";
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column({nullable: false})
+  @Column()
   @IsString()
   @IsNotEmpty()
   firstName: string
 
-  @Column({nullable: false, unique: true})
+  @Column()
   @IsEmail()
   @IsNotEmpty()
   email: string
 
-  @Column({nullable: false, enum: ["user", "admin"]})
+  @Column()
   @IsString()
   @IsNotEmpty()
   userType: string
@@ -25,7 +25,7 @@ export class User {
   @IsAlphanumeric()
   password: string
 
-  @Column({nullable: true})
+  @Column()
   @IsNumber()
   balance: number
 
@@ -33,4 +33,7 @@ export class User {
   @IsNotEmpty()
   accountNumber: string
   userRepository: any;
+
+  // @OneToMany(() => Transaction, (transaction) => transaction.user)
+  // transaction: Transaction[];
 }
