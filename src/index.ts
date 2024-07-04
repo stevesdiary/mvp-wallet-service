@@ -11,12 +11,15 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
+
+app.use(transactionRoute);
+app.use(userRoute);
+app.use(accountRoute);
+
 app.get("/", (req:Request, res: Response) => {
 	return res.status(200).send("Welcome to my simple loan application.");
 })
-app.use(userRoute);
-app.use(accountRoute);
-app.use(transactionRoute);
+
 
 const port = process.env.LOCAL_PORT || 8888;
 
