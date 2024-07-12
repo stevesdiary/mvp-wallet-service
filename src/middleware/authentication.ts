@@ -5,11 +5,10 @@ const secret: string = process.env.SECRETKEY || "Secret_key"
 export const authentication = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const header = req.headers['authorization']
-      let token = req.headers.authorization;
-      token = header?.split(' ')[1];
-      // const decoded = jwt.verify(token, secret) as jwt.JwtPayload;
-      // req.user = decoded;
-      if(token == null || token.length === 0 ) {
+      let token = req.headers.authorization ;
+      token = header?.split(' ')[1] || 'string';
+      const decoded = jwt.verify(token, secret) as jwt.JwtPayload;
+      if(token == null || !token) {
         return res.status(403).json({message: 'Invalid or expired token'})
       }
       next();
@@ -32,7 +31,7 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
       const decoded = jwt.verify(token, secret)as jwt.JwtPayload;
       
       let userType = decoded.userType;
-      console.log("User", userType);
+      // console.log("User", userType);
       if (allowedType.includes(userType)) {
         next();
       }
