@@ -13,7 +13,7 @@ const loginController = {
       }
       
     } catch (error) {
-      
+      return res.status(500).send( {message: 'an error ocurred', error} )
     }
   }
   
