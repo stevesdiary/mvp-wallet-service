@@ -43,7 +43,7 @@ const transactionController = {
       })
       const recipient = await userRepository.findOne({ where: { accountNumber: recipientAccountNumber } })
       if (!senderAccountNumber || !recipientAccountNumber || !amount) {
-        return res.status(404).send({ message: 'SenderAccountNumber, RecipientAccountNumber and amount are required' })
+        return res.status(400).send({ message: 'SenderAccountNumber, RecipientAccountNumber and amount are required' })
       }
       if (!sender) return res.status(404).send({ message: "Sender not found" })
       if (!recipient) return res.status(404).send({ message: "Recipient not found" })
@@ -106,15 +106,16 @@ const transactionController = {
 
   withdraw: async (req: Request, res: Response) => {
     try {
+      console.log('Route working')
       const { amount, senderAccountNumber } = req.body;
       const sender = await userRepository.findOne({ where: { accountNumber: senderAccountNumber } });
       if (!senderAccountNumber || !amount) {
-        return res.status(404).send({ message: 'SenderAccountNumber and amount are required' })
+        return res.status(400).send({ message: 'SenderAccountNumber and amount are required' })
       }
       if (!sender) return res.status(404).send({ message: "Sender not found" })
       if (sender.balance < amount) return res.status(401).send({ message: 'Insufficient balance, fund account to make transfer or send a lower amount' })
       sender.balance -= amount;
-      await sender.userRepository.save();
+      // await sender.userRepository.save();
       const debitTransaction: TransactionCreationData = {
         transactionType: 'debit',
         senderAccountNumber,
@@ -124,7 +125,7 @@ const transactionController = {
       }
       const newDebitTransaction = transactionRepository.create(debitTransaction);
       await transactionRepository.save(newDebitTransaction);
-      return res.status(200).json({ message: `${sender.firstName} made withdrawal successfully` })
+      return res.status(200).json({ message: `${sender.firstName} made withdrawal of #${amount} successfully` })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ message: "Error", error })
@@ -145,7 +146,7 @@ const transactionController = {
       return res.status(200).json({ message: 'Got all transactions', alltransactions })
     } catch (error) {
       console.log(error)
-      return res.status(500).json({ message: ' Error occured', error })
+      return res.status(500).json({ message: 'Error occured', error })
     }
   },
 
