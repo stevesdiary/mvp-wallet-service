@@ -123,8 +123,8 @@ const userController = {
     try {
       const id = req.params.id;
       const deleteUser = await userRepository.delete({ id });
-      if (!deleteUser) { return res.status(404).json({ message: 'Record not deleted' }) }
-      return res.status(200).json({ message: 'Record deleted successfully' })
+      if (!deleteUser) { return res.status(404).json({ message: 'User record not deleted, an error must have occured' }) }
+      return res.status(200).json({ message: 'User record deleted successfully' })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ message: 'Error occured', error })

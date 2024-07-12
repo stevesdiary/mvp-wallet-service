@@ -86,7 +86,7 @@ const transactionController = {
       }
       const newCreditTransaction = transactionRepository.create(creditTransaction);
       await transactionRepository.save(newCreditTransaction);
-      return res.status(200).json({ message: `${recipient.firstName} funded successfully` })
+      return res.status(200).json({ message: `${recipient.firstName}'s account funded successfully with #${amount}.` })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ message: "Error", error })
@@ -95,7 +95,6 @@ const transactionController = {
 
   withdraw: async (req: Request, res: Response) => {
     try {
-      // console.log('Route working')
       const { amount, senderAccountNumber } = req.body;
       const sender = await userRepository.findOne({ where: { accountNumber: senderAccountNumber } });
       if (!senderAccountNumber || !amount) {
@@ -104,7 +103,7 @@ const transactionController = {
       if (!sender) return res.status(404).send({ message: "Sender not found" })
       if (sender.balance < amount) return res.status(401).send({ message: 'Insufficient balance, fund account to make transfer or send a lower amount' })
       sender.balance -= amount;
-      // await sender.userRepository.save();
+      await sender.userRepository.save();
       const debitTransaction: TransactionCreationData = {
         transactionType: 'debit',
         senderName: sender.firstName,
