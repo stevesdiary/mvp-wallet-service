@@ -20,7 +20,7 @@ const loginController = {
       if (!foundUser){
         return res.send("User profile is not found");
       }
-      console.log(password, foundUser.password)
+      
       const isMatch = bcrypt.compareSync(password, foundUser.password);
       if (isMatch){
         const data = {
