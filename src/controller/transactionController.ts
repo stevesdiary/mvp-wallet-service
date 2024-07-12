@@ -8,31 +8,14 @@ const userRepository = AppDataSource.manager.getRepository(User);
 interface TransactionCreationData {
   transactionType: string;
   amount: number;
+  senderName: string;
+  recipientName: string;
   recipientAccountNumber: string;
   senderAccountNumber: string;
   date: any;
 }
 
 const transactionController = {
-  create: async (req: Request, res: Response): Promise<Response> => {
-    try {
-      const { senderAccountNumber, transactionType, amount, recipientAccountNumber } = req.body;
-      const transaction: TransactionCreationData = {
-        transactionType,
-        senderAccountNumber,
-        recipientAccountNumber,
-        amount,
-        date: new Date()
-      }
-      const newTransaction = transactionRepository.create(transaction);
-      await transactionRepository.save(newTransaction);
-      return res.status(201).json({ message: 'Transaction successful', newTransaction })
-    } catch (error) {
-      console.error(error);
-      return res.status(500).send({ error })
-    }
-  },
-
   transferFunds: async (req: Request, res: Response,): Promise<Response> => {
     try {
       const { amount, recipientAccountNumber, senderAccountNumber, transactionType } = req.body;
@@ -54,6 +37,8 @@ const transactionController = {
       await userRepository.save(recipient);
       const creditTransaction: TransactionCreationData = {
         transactionType: 'credit',
+        senderName: sender.firstName,
+        recipientName: recipient.firstName,
         senderAccountNumber,
         recipientAccountNumber,
         amount,
@@ -61,9 +46,11 @@ const transactionController = {
       }
       const debitTransaction: TransactionCreationData = {
         transactionType: 'debit',
+        senderName: sender.firstName,
         senderAccountNumber,
+        recipientName: recipient.firstName,
         recipientAccountNumber,
-        amount: - amount,
+        amount: amount,
         date: new Date(),
       }
       const newCreditTransaction = transactionRepository.create(creditTransaction);
@@ -90,7 +77,9 @@ const transactionController = {
       const received = await userRepository.save(recipient);
       const creditTransaction: TransactionCreationData = {
         transactionType: 'credit',
+        senderName: '',
         senderAccountNumber: '',
+        recipientName: recipient.firstName,
         recipientAccountNumber,
         amount,
         date: new Date(),
@@ -118,7 +107,9 @@ const transactionController = {
       // await sender.userRepository.save();
       const debitTransaction: TransactionCreationData = {
         transactionType: 'debit',
+        senderName: sender.firstName,
         senderAccountNumber,
+        recipientName: '',
         recipientAccountNumber: '',
         amount: amount,
         date: new Date(),

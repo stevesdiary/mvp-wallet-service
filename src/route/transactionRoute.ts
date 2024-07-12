@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 import transactionController from "../controller/transactionController";
 
-router.post("/transaction/create", transactionController.create);
+// router.post("/transaction/create", transactionController.create);
 router.get("/transactions", transactionController.getAll);
 router.delete("/transaction/:id", transactionController.delete);
 router.get("/transaction/:id", transactionController.getOne);

@@ -12,9 +12,15 @@ export class Transaction {
   @Column({enum: ["credit", "debit"], nullable: false})
   transactionType: string
 
+  @Column()
+  senderName: string
+
   @Column({nullable: false})
   senderAccountNumber: string
 
+  @Column()
+  recipientName: string
+  
   @Column()
   recipientAccountNumber: string
 
