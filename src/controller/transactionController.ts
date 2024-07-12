@@ -106,7 +106,7 @@ const transactionController = {
 
   withdraw: async (req: Request, res: Response) => {
     try {
-      console.log('Route working')
+      // console.log('Route working')
       const { amount, senderAccountNumber } = req.body;
       const sender = await userRepository.findOne({ where: { accountNumber: senderAccountNumber } });
       if (!senderAccountNumber || !amount) {
