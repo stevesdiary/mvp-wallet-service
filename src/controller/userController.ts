@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
 import bcrypt from "bcryptjs";
+import axios, { AxiosError } from "axios";
+const blacklistEndPoint: string = process.env.BLACKLIST_API || ''
 
 const userRepository = AppDataSource.manager.getRepository(User);
 
@@ -17,6 +19,65 @@ const userController = {
     }
     catch (error) {
       console.log(error);
+    }
+  },
+
+  addUserToBlacklist: async ( req: Request, res: Response ) => {
+    try{
+      const { email } = req.body.email;
+      if (!email) {
+        return res.status(400).json({ message: 'Email is required' });
+      }
+      const response = await axios.post( blacklistEndPoint, { email });
+
+      if (response.status === 201 || response.status === 200) {
+        return res.status(200).json({ message: `${email} successfully added to blacklist` });
+      } else {
+        return res.status(response.status).json({ message: 'Failed to add email to blacklist', data: response.data });
+      }
+    } catch(error){
+      return res.status(500).send({ message: `Error`, error })
+    }
+  },
+
+  getBlacklist: async (req: Request, res: Response) => {
+    try {
+      const response = await axios.get(blacklistEndPoint)
+      if ( response.status !== 200 ) {
+        return res.status(404).json({ message: `Emails not found or an error occured` });
+      } else {
+        return res.status(200).json({ message: 'Blacklist emails', data: response });
+      }
+    } catch (error) {
+      return res.status(500).send({message: "Error", AxiosError})
+    }
+  },
+
+  removeBlacklist: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const numericEmailId = Number(id);
+      
+      if (!id) {
+        return res.status(400).json({ message: 'Email ID is required' });
+      }
+      
+      if (isNaN(numericEmailId)) {
+        return res.status(400).json({ message: 'Invalid Email ID' });
+      }
+
+      const response = await axios.delete(`${blacklistEndPoint}/${numericEmailId}`);
+      
+      if (response.status === 200 || response.status === 204) {
+        return res.status(200).json({ message: 'Email successfully removed from blacklist' });
+      } 
+      else {
+        return res.status(response.status).json({ message: 'Failed to remove email from blacklist', data: response.data });
+      }
+      
+    } catch (error) {
+        // console.error('Unexpected error:', (error as Error).message);
+        return res.status(500).json({ message: 'Unexpected error occurred', error: (error as Error).message });
     }
   },
 
