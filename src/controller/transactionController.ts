@@ -103,7 +103,7 @@ const transactionController = {
       if (!sender) return res.status(404).send({ message: "Sender not found" })
       if (sender.balance < amount) return res.status(401).send({ message: 'Insufficient balance, fund account to make transfer or send a lower amount' })
       sender.balance -= amount;
-      await sender.userRepository.save();
+      await userRepository.save(sender);
       const debitTransaction: TransactionCreationData = {
         transactionType: 'debit',
         senderName: sender.firstName,
@@ -118,7 +118,7 @@ const transactionController = {
       return res.status(200).json({ message: `${sender.firstName} made withdrawal of #${amount} successfully` })
     } catch (error) {
       console.log(error)
-      return res.status(500).json({ message: "Error", error })
+      return res.status(500).json({ message: "Error occured", error })
     }
   },
 
