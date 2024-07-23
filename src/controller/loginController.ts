@@ -16,8 +16,6 @@ const loginController = {
       return res.status(500).send( {message: 'an error ocurred', error} )
     }
   }
-  
-
 }
 
 export default loginController;
