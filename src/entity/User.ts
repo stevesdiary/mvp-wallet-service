@@ -29,9 +29,9 @@ export class User {
   @IsNumber()
   balance: number
 
-  @Column({nullable: false, unique: true})
+  @Column({nullable: false})
   @IsNotEmpty()
-  accountNumber: string
+  accountNumber: number;
   userRepository: any;
 
   // @OneToMany(() => Transaction, (transaction) => transaction.user)
