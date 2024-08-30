@@ -129,7 +129,7 @@ const userController = {
         accountNumber,
       };
 
-      const newUser = userRepository.create(user);
+      const newUser = userRepository.create();
       await userRepository.save(newUser);
       return res.status(201).json({ message: 'User created', user })
     } catch (error) {
@@ -150,14 +150,30 @@ const userController = {
     try {
       const { firstName, userType, password, email } = req.body;
       const id = req.params.id;
-      function generateRandomAccountNumber() {
-        let accountNumber = '';
-        for (let i = 0; i < 10; i++) {
-          accountNumber += Math.floor(Math.random() * 10);
-        }
-        return accountNumber;
-      }
-      const accountNumber = generateRandomAccountNumber();
+      // function generateRandomAccountNumber() {
+      //   let accountNumber = '';
+      //   for (let i = 0; i < 10; i++) {
+      //     accountNumber += Math.floor(Math.random() * 10);
+      //   }
+      //   return accountNumber;
+      // }
+const generatedNumbers = new Set<number>();
+
+function generateUniqueAccountNumber(): number {
+  let number: number;
+  do {
+    // Generate a random 10-digit number
+    number = Math.floor(1000000000 + Math.random() * 9000000000);
+  } while (generatedNumbers.has(number));
+  generatedNumbers.add(number);
+  return accountNumber;
+}
+
+// Example usage: Generate 10 unique 10-digit numbers
+for (let i = 0; i < 10; i++) {
+  console.log(generateUniqueAccountNumber());
+}
+      const accountNumber = generateUniqueAccountNumber();
       const user = await userRepository.findOne({ where: { id } })
       if (!user) {
         return res.status(404).json({ message: "User not found" })
