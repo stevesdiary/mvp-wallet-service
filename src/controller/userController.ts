@@ -112,7 +112,7 @@ const userController = {
       const emailExists = emailList.includes(email);
 
       const hashedPassword = await bcrypt.hash(password, 10);
-      const existingUser = await userRepository.findOne({ where: { email } })
+      const existingUser = await userRepository.findOne({ where: { email } });
       
       if (existingUser) {
         return res.status(400).json({ message: `User profile already exist for ${email}` })
