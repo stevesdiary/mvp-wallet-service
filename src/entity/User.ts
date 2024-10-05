@@ -11,7 +11,7 @@ export class User {
   @IsNotEmpty()
   firstName: string
 
-  @Column()
+  @Column({ unique: true })
   @IsEmail()
   @IsNotEmpty()
   email: string
@@ -21,7 +21,7 @@ export class User {
   @IsNotEmpty()
   userType: string
 
-  @Column({select: false})
+  @Column({select: false, nullable: false })
   @IsAlphanumeric()
   password: string
 
