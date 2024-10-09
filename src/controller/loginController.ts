@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
-import  bcrypt  from 'bcryptjs';
-import  jwt from 'jsonwebtoken';
-const secret = process.env.SECRETKEY || 'secret_key';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+
+
 const userRepository  = AppDataSource.manager.getRepository(User);
 const loginController = {
   login: async (req: Request, res: Response) => {
@@ -16,24 +17,24 @@ const loginController = {
       if (!user ) { 
         return res.status( 200 ).send({message: "User not found"}); 
       }
-      const foundUser = await userRepository.findOne({ where: { email } });
-      if (!foundUser){
-        return res.send("User profile is not found");
+      const validUser = await bcrypt.compare(password, user.password);
+      if ( !validUser ) {
+        return res.status(401).json({ message: 'Incorrect password'})
       }
-      
-      const isMatch = bcrypt.compareSync(password, foundUser.password);
-      if (isMatch){
-        const data = {
-          email: foundUser.email,
-          type: foundUser.userType
-        } 
-        const token = jwt.sign(data, secret, { expiresIn: '2 days', });
-        const user = await userRepository.findOne({ where: { email } });
-        return res.status(200).json({ message: `Logged in successfully as ${user?.userType}`, User: user, token: token})
-      }
+      const token = jwt.sign({
+        user_id: user.id,
+        email: user.email,
+        type: user.userType,
+      }, process.env.JWT_SECRET as string, {expiresIn: '1h'});
+      return res.status(200).send({
+        message: "Logged in successfully",
+        firstName: user.firstName,
+        id: user.id,
+        token: token,
+      })
     } catch (error) {
-      console.log(error)
-      return res.status(500).json({ message: `Error happened`, error})
+      console.log(error);
+      return res.status(500).send( {message: 'an error ocurred', error} )
     }
   }
 }
