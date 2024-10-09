@@ -12,6 +12,11 @@ export class User {
   firstName: string
 
   @Column()
+  @IsString()
+  @IsNotEmpty()
+  lastName: string
+
+  @Column({ unique: true })
   @IsEmail()
   @IsNotEmpty()
   email: string
@@ -21,11 +26,11 @@ export class User {
   @IsNotEmpty()
   userType: string
 
-  @Column() //{select: false}
+  @Column({ nullable: false })
   @IsAlphanumeric()
   password: string
 
-  @Column()
+  @Column({ nullable: false, default: 0 })
   @IsNumber()
   balance: number
 
