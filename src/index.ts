@@ -7,6 +7,7 @@ import express from "express";
 import userRoute from "./route/userRoute";
 import accountRoute from './route/loginRoute';
 import transactionRoute from "./route/transactionRoute";
+import logingRoute from "./route/loginRoute";
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(transactionRoute);
 app.use(userRoute);
 app.use(accountRoute);
+app.use(logingRoute);
 
 app.get("/", (req:Request, res: Response) => {
 	return res.status(200).send("Welcome to my simple loan application.");
