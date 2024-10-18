@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "mvp loan wallet service",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "tsc && node build/src/index.js",
@@ -47,6 +48,7 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.7.5",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
