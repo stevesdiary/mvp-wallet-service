@@ -1,6 +1,6 @@
-import express, { Router, Request, Response } from "express";
+import { Router } from "express";
 import userController from "../controller/userController";
-import { authentication, verifyUser } from "../middleware/authentication";
+import { authentication } from "../middleware/authentication";
 
 const router = Router();
 router.post ("/user", authentication, userController.create);
