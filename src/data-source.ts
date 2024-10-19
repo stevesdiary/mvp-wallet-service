@@ -1,9 +1,9 @@
 import "reflect-metadata"
-import * as dotenv from "dotenv";
-import { DataSource } from "typeorm"
-import { User } from "./entity/User";
-import { Transaction } from "./entity/Transaction";
+import * as dotenv from 'dotenv';
 dotenv.config();
+import { DataSource } from "typeorm"
+// import { User } from "./entity/User";
+// import { Transaction } from "./entity/Transaction";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE,
   synchronize: false,
   logging: false,
-  entities: [User, Transaction],
+  entities: ["src/entity/**/*.ts"],
   migrations: ["src/migration/**/*.ts"],
   subscribers: ["src/subscriber/**/*.ts"],
 })
