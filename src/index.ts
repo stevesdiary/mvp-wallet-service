@@ -1,4 +1,5 @@
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
 import "reflect-metadata";
 import * as bodyParser from "body-parser";
 import { AppDataSource } from "./data-source";
@@ -30,6 +31,6 @@ AppDataSource.initialize().then(async () => {
 		console.log("Database connected successfully!");
 		console.log(`App running on port ${port}.`);
 	});
-}).catch(error => {
+}).catch((error: any) => {
 	console.error("Database connection error:", error);
 });
