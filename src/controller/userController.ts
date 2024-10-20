@@ -4,6 +4,13 @@ import { User } from "../entity/User";
 import bcrypt from "bcryptjs";
 
 const userRepository = AppDataSource.manager.getRepository(User);
+function generateRandomAccountNumber() {
+  let accountNumber = '';
+  for (let i = 0; i < 10; i++) {
+    accountNumber += Math.floor(Math.random() * 10);
+  }
+  return accountNumber;
+}
 
 const userController = {
   getOne: async (req: Request, res: Response) => {
@@ -22,22 +29,23 @@ const userController = {
 
   create: async (req: Request, res: Response): Promise<Response> => {
     try {
-      const { firstName, email, userType, password } = req.body;
+      const { firstName, lastName, email, userType, password } = req.body;
       interface UserCreationData {
         firstName: string;
+        lastName: string;
         email: string;
         userType: string;
         password: string;
         accountNumber: string;
       }
-      function generateAccountNumber() {
-        let accountNumber = '';
-        for (let i = 0; i < 10; i++) {
-          accountNumber += Math.floor(Math.random() * 10);
-        }
-        return accountNumber;
-      }
-      const accountNumber = generateAccountNumber();
+      // function generateAccountNumber() {
+      //   let accountNumber = '';
+      //   for (let i = 0; i < 10; i++) {
+      //     accountNumber += Math.floor(Math.random() * 10);
+      //   }
+      //   return accountNumber;
+      // }
+      const accountNumber = generateRandomAccountNumber();
 
       const url = process.env.BLACKLIST_API || "url";
       const response = await fetch(url);
@@ -62,6 +70,7 @@ const userController = {
 
       const user: UserCreationData = {
         firstName,
+        lastName,
         email,
         userType,
         password: hashedPassword,
@@ -89,21 +98,22 @@ const userController = {
 
   updateUser: async (req: Request, res: Response) => {
     try {
-      const { firstName, userType, password, email } = req.body;
+      const { firstName, lastName, userType, password, email } = req.body;
       const id = req.params.id;
-      function generateRandomAccountNumber() {
-        let accountNumber = '';
-        for (let i = 0; i < 10; i++) {
-          accountNumber += Math.floor(Math.random() * 10);
-        }
-        return accountNumber;
-      }
+      // function generateRandomAccountNumber() {
+      //   let accountNumber = '';
+      //   for (let i = 0; i < 10; i++) {
+      //     accountNumber += Math.floor(Math.random() * 10);
+      //   }
+      //   return accountNumber;
+      // }
       const accountNumber = generateRandomAccountNumber();
       const user = await userRepository.findOne({ where: { id } })
       if (!user) {
         return res.status(404).json({ message: "User not found" })
       }
       if (firstName) user.firstName = firstName;
+      if (lastName) user.lastName = lastName;
       if (accountNumber) user.accountNumber = accountNumber; 
       if (email) user.email = email;
       if (userType) user.userType = userType;
