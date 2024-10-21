@@ -33,3 +33,5 @@ export class Transaction {
   @DeleteDateColumn()
   deletedAt: Date
 }
+
+export default Transaction;
