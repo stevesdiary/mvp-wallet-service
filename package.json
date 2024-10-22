@@ -8,7 +8,6 @@
     "build": "tsc",
     "start": "tsc && node build/src/index.js",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:run": "npm run typeorm migration:run -- -d src/data-source.ts",
     "migration:generate": "npm run typeorm migration:generate -- src/migrations/",
     "migration:create": "npm run typeorm migration:create -- src/migrations/",
     "migration:revert": "npm run typeorm migration:revert -- -d src/data-source.ts",
