@@ -42,3 +42,5 @@ export class User {
   // @OneToMany(() => Transaction, (transaction) => transaction.user)
   // transaction: Transaction[];
 }
+
+export default User;
