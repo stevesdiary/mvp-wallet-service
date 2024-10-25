@@ -1,4 +1,4 @@
-import { AppDataSource } from "../data-source";
+import AppDataSource from "../data-source";
 import { Transaction } from "../entity/Transaction";
 import { User } from "../entity/User";
 import { Request, Response } from "express";

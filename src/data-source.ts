@@ -2,10 +2,10 @@ import "reflect-metadata"
 import * as dotenv from 'dotenv';
 dotenv.config();
 import { DataSource } from "typeorm"
-// import { User } from "./entity/User";
+import { User } from "./entity/User";
 // import { Transaction } from "./entity/Transaction";
 
-export const AppDataSource = new DataSource({
+const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST,
   port: 3306,
@@ -18,3 +18,5 @@ export const AppDataSource = new DataSource({
   migrations: ["src/migration/**/*.ts"],
   subscribers: ["src/subscriber/**/*.ts"],
 })
+
+export default AppDataSource;

@@ -4,34 +4,34 @@ import { User } from "./User"
 export class Transaction {
 
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id!: string
 
   @Column()
-  amount: number
+  amount!: number
 
   @Column({enum: ["credit", "debit"]})
-  transactionType: string
+  transactionType!: string
 
   @Column()
-  senderAccountNumber: string
+  senderAccountNumber!: string
 
   @Column()
-  recipientAccountNumber: string
+  recipientAccountNumber!: string
 
   @Column()
-  date: Date
+  date!: Date
 
   // @ManyToOne(() =>  User, (user) => user.transaction)
   // user: User
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt!: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt!: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  deletedAt!: Date
 }
 
 export default Transaction;
