@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc-alias",
-    "start": "tsc && node build/index.js",
+    "build": "tsc",
+    "start": "tsc && node build/src/index.js",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:generate": "npm run typeorm migration:generate -- src/migrations/",
     "migration:create": "npm run typeorm migration:create -- src/migrations/",
