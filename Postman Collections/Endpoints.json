@@ -1,0 +1,1802 @@
+{
+	"info": {
+		"_postman_id": "84d9afcf-aeb9-435b-94e4-2c1e39eb9dc4",
+		"name": "mvp-wallet-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.user).to.be.an('object');",
+									"    pm.expect(responseData.user.firstName).to.exist;",
+									"    pm.expect(responseData.user.email).to.exist;",
+									"    pm.expect(responseData.user.userType).to.exist;",
+									"    pm.expect(responseData.user.password).to.exist;",
+									"    pm.expect(responseData.user.accountNumber).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.user.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Account number is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.user.accountNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Account number should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e37f81e4-9b1e-48bc-8fd4-97f1c8f14b28",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Ade\",\n  \"email\": \"adeola@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/user"
+					},
+					"response": [
+						{
+							"id": "e4283695-8b2f-4492-a685-a65d5ec92cbc",
+							"name": "Create user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Adejare\",\n  \"email\": \"dayoade@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:22:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "200"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23be7c6d7fbf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce-or3Clp+Dqspbv8jW5dhiX3L1Tm0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "6babd0e4-3c81-4db6"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"User created\",\n    \"user\": {\n        \"firstName\": \"Adejare\",\n        \"email\": \"dayoade@email.com\",\n        \"userType\": \"user\",\n        \"password\": \"$2a$10$OPoWSZaQYr0xylXmIvVq5.bqGamFykby7jwiflavrWq2SwbNylUzi\",\n        \"accountNumber\": \"3554621010\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "One user by ID",
+					"id": "6b917cbe-f151-4c36-9c6d-5d34322fcb2e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://mvp-wallet-service.onrender.com/user/02db13a3-2c82-4d7c-98b8-eead019c7e46"
+					},
+					"response": [
+						{
+							"id": "b43bbd21-db44-4603-b1d0-c051d73c397f",
+							"name": "One user by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user/006eaf94-3355-48a2-9971-e7e10089ffbe"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:18:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23b984df56bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b8-IfiAKKS0lFRzIGHGNjGQ2y9SqIA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "0e73af33-1f85-4a5b"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got one!\",\n    \"user\": {\n        \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n        \"firstName\": \"Adejare\",\n        \"email\": \"dayoade@email.com\",\n        \"userType\": \"user\",\n        \"balance\": 0,\n        \"accountNumber\": \"2728851350\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "All users",
+					"id": "d19dfc59-7c65-4e80-b0b4-11d6bd5ce4db",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://mvp-wallet-service.onrender.com/users"
+					},
+					"response": [
+						{
+							"id": "dd503e41-ac10-498d-8607-4c447b6dc486",
+							"name": "One user by ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:18:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "607"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23b88d4aa0bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"639-BB6Tdf3B93y8tVf4aCvaB9wBBe8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "6431a85d-3689-4ed5"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got users\",\n    \"allUser\": [\n        {\n            \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"dayoade@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"2728851350\"\n        },\n        {\n            \"id\": \"17df9d3b-391f-4f80-a9f4-2825adfa9fa1\",\n            \"firstName\": \"Smart\",\n            \"email\": \"test@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 4752,\n            \"accountNumber\": \"1231231234\"\n        },\n        {\n            \"id\": \"493606ad-af23-44e9-9bc1-e87d691a6154\",\n            \"firstName\": \"Williams\",\n            \"email\": \"test31@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 290,\n            \"accountNumber\": \"6710555292\"\n        },\n        {\n            \"id\": \"5f190cb1-6ec3-4b0a-a605-91e2b54f93d0\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"aeadingtonj@ustream.tv\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"9122016198\"\n        },\n        {\n            \"id\": \"9286f813-c5e3-401c-b797-f5e79ae8b086\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"Warren_Hermann49@example.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"7997295079\"\n        },\n        {\n            \"id\": \"b3fd9d20-87c1-406d-b804-5d012574f041\",\n            \"firstName\": \"Sunday\",\n            \"email\": \"test2@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 178,\n            \"accountNumber\": \"2282772391\"\n        },\n        {\n            \"id\": \"bc2f9cf5-f60c-429a-b3e5-29c029c93633\",\n            \"firstName\": \"Samuel\",\n            \"email\": \"test3@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 0,\n            \"accountNumber\": \"9767633301\"\n        },\n        {\n            \"id\": \"d0d130e5-0b7d-4af2-a1ff-bb9107bbd17a\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"mrosa0@go.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"0070687672\"\n        },\n        {\n            \"id\": \"d271a8e4-8798-43b5-99b9-1713b506cf35\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"adejare@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"3037054113\"\n        },\n        {\n            \"id\": \"e52a67ac-1048-4dfa-9670-61071ac2bcf4\",\n            \"firstName\": \"Sunny\",\n            \"email\": \"sunny@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"8807530538\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field - message\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property('message');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field format is valid\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Ensure that the response body is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData).to.not.be.empty;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "ccb16c54-36b2-49c4-a101-28c7294166fd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Samuel\",\n  \"email\": \"sammy@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/user/c9810a5b-15a3-43b3-9231-994082395e38"
+					},
+					"response": [
+						{
+							"id": "cd58a50c-dbf6-4979-92ce-b31e31da70df",
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Adejare\",\n  \"email\": \"Bridgette.Lowe26@example.org\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user/006eaf94-3355-48a2-9971-e7e10089ffbe"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:20:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23bc18f888bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-M7NWSSEulcK9y/NhbLM3aMzPYbk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "ff274856-4a0d-4eb8"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"User data updated\",\n    \"user\": {\n        \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n        \"firstName\": \"Adejare\",\n        \"email\": \"Bridgette.Lowe26@example.org\",\n        \"userType\": \"user\",\n        \"balance\": 0,\n        \"accountNumber\": \"0506216742\",\n        \"password\": \"$2a$10$N8T6fSrWO5RQpK.gLu9pN.Sv0mDf52KBKTZ.zcLRQ30PjQ0WoSRVS\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete by ID",
+					"id": "44d185e1-8364-43fa-9b2f-5ece95b50b73",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://mvp-wallet-service.onrender.com/user/5f190cb1-6ec3-4b0a-a605-91e2b54f93d0"
+					},
+					"response": [
+						{
+							"id": "0136d00e-46b3-4da3-b7d0-1ef6ac000842",
+							"name": "Delete by ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user/c3f87a33-ac85-4dc4-911c-9f07cf167211"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:20:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23bcafd8b0bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-us2dDQ8uYUhKd54WoDEgZNWpdX4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "00fc6d37-0639-496d"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Record deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add user to blacklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - email and id\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('email');",
+									"  pm.expect(responseData).to.have.property('id');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid email format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d62679a9-41c9-4899-9b39-05ab1b7c01b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ngozi1@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://667c1dfd3c30891b865b6308.mockapi.io/emails"
+					},
+					"response": [
+						{
+							"id": "178ab51b-580c-4d04-bb74-64916b34fd7f",
+							"name": "http://localhost:5000/getonebytitle",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"walllio@email.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://667c1dfd3c30891b865b6308.mockapi.io/emails"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1720891265&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=AiiNoORRga32rEqfS72MHtFaou0hST2StGE8lRfANL0%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1720891265&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=AiiNoORRga32rEqfS72MHtFaou0hST2StGE8lRfANL0%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET,PUT,POST,DELETE,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With,Content-Type,Cache-Control,access_token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jul 2024 17:21:05 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"email\": \"walllio@email.com\",\n    \"id\": \"57\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove user email from blacklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field should not be empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f36bb758-484f-467e-922d-b4b25e637e78",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/user/removeblacklist/19"
+					},
+					"response": [
+						{
+							"id": "a1d4e56e-3ea8-4195-aaef-58a765bc47d0",
+							"name": "remove user form blacklist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user/removeblacklist/35"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jul 2024 17:18:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a2aeecf1fff642d-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-A89pAplKtugqkLT3f0a+uhH30nM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "e56a8162-211c-4980"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Email successfully removed from blacklist\"\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"id": "63bb9cee-9248-424d-b324-635cfe15a17f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"adeola1@email.com\",\n  \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:777/login"
+					},
+					"response": []
+				}
+			],
+			"id": "6ec0ccbd-264b-4d7a-b7ce-6e0d49b31eaf"
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "All transactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json().alltransactions;",
+									"",
+									"    responseData.forEach(function(transaction) {",
+									"        pm.expect(transaction).to.have.property('id');",
+									"        pm.expect(transaction).to.have.property('amount');",
+									"        pm.expect(transaction).to.have.property('transactionType');",
+									"        pm.expect(transaction).to.have.property('senderName');",
+									"        pm.expect(transaction).to.have.property('senderAccountNumber');",
+									"        pm.expect(transaction).to.have.property('recipientName');",
+									"        pm.expect(transaction).to.have.property('recipientAccountNumber');",
+									"        pm.expect(transaction).to.have.property('date');",
+									"        pm.expect(transaction).to.have.property('createdAt');",
+									"        pm.expect(transaction).to.have.property('updatedAt');",
+									"        pm.expect(transaction).to.have.property('deletedAt');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Amount is a non-negative number\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.alltransactions).to.be.an('array');",
+									"  responseData.alltransactions.forEach(function(transaction) {",
+									"    pm.expect(transaction.amount).to.be.a('number').and.to.be.at.least(0);",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Date is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.alltransactions).to.be.an('array');",
+									"    responseData.alltransactions.forEach(function(transaction) {",
+									"        pm.expect(transaction.date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Alltransactions array is present and contains expected number of elements\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.alltransactions).to.be.an('array');",
+									"    pm.expect(responseData.alltransactions).to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "fbbe9fe9-8761-4f9f-a951-624905da2e4e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mvp-wallet-service.onrender.com/transactions/?transactionType=debit",
+							"protocol": "https",
+							"host": [
+								"mvp-wallet-service",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"transactions",
+								""
+							],
+							"query": [
+								{
+									"key": "transactionType",
+									"value": "debit"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c20e024d-3eef-44ab-a8f3-5fc759868277",
+							"name": "All transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"transactionType\": \"credit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://mvp-wallet-service.onrender.com/transactions",
+									"protocol": "https",
+									"host": [
+										"mvp-wallet-service",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "transactionType",
+											"value": "credit",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:29:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "609"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23c91918c2bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a03-7Z9PWxIkrCJiiOQ5x7S8MvCIsMs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "a36faa8c-5122-4478"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got all transactions\",\n    \"alltransactions\": [\n        {\n            \"id\": \"120d497e-19ab-4acb-af07-1dc5fabc738b\",\n            \"amount\": 10,\n            \"transactionType\": \"credit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": \"2024-07-01T00:48:10.000Z\",\n            \"createdAt\": \"2024-07-01T00:48:10.290Z\",\n            \"updatedAt\": \"2024-07-01T01:03:32.057Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"1d0917a2-95e1-42c5-8da4-31e6ec893abf\",\n            \"amount\": 53,\n            \"transactionType\": \"credit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"2282772391\",\n            \"date\": \"2024-06-24T22:02:09.000Z\",\n            \"createdAt\": \"2024-06-24T21:02:13.228Z\",\n            \"updatedAt\": \"2024-06-24T21:02:13.228Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"5e4d558a-8f8c-494b-8201-918a481fafbd\",\n            \"amount\": 20,\n            \"transactionType\": \"credit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": \"2024-06-24T22:26:26.000Z\",\n            \"createdAt\": \"2024-06-24T21:26:26.775Z\",\n            \"updatedAt\": \"2024-06-24T21:26:26.775Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"baec3d10-a926-4e40-b870-668a284afa8b\",\n            \"amount\": 30,\n            \"transactionType\": \"debit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": null,\n            \"createdAt\": \"2024-06-24T21:19:20.625Z\",\n            \"updatedAt\": \"2024-07-01T09:37:01.156Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"d5755c54-1f75-4a81-9a44-807031e45884\",\n            \"amount\": 53,\n            \"transactionType\": \"credit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"2282772391\",\n            \"date\": \"2024-06-24T22:02:09.000Z\",\n            \"createdAt\": \"2024-06-24T21:02:10.110Z\",\n            \"updatedAt\": \"2024-06-24T21:02:10.110Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"d58e1e71-b71f-4396-8e14-425142deb8ce\",\n            \"amount\": 20,\n            \"transactionType\": \"credit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": \"2024-07-01T01:46:24.000Z\",\n            \"createdAt\": \"2024-07-01T00:46:24.481Z\",\n            \"updatedAt\": \"2024-07-01T00:46:24.481Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"da906d9d-a10b-4f24-9462-ea707e51276d\",\n            \"amount\": 0,\n            \"transactionType\": \"\",\n            \"senderAccountNumber\": \"\",\n            \"recipientAccountNumber\": \"\",\n            \"date\": \"2024-07-12T20:28:51.000Z\",\n            \"createdAt\": \"2024-07-12T20:28:51.773Z\",\n            \"updatedAt\": \"2024-07-12T20:28:51.773Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"f7224879-714f-4b53-852f-228e7453dddc\",\n            \"amount\": 20,\n            \"transactionType\": \"debit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": null,\n            \"createdAt\": \"2024-06-24T21:26:28.174Z\",\n            \"updatedAt\": \"2024-07-01T09:37:07.659Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"ff4d8ada-2e33-472c-a988-2ee17300d70c\",\n            \"amount\": 20,\n            \"transactionType\": \"debit\",\n            \"senderAccountNumber\": \"1231231234\",\n            \"recipientAccountNumber\": \"6710555292\",\n            \"date\": \"2024-07-01T01:46:24.000Z\",\n            \"createdAt\": \"2024-07-01T00:46:25.741Z\",\n            \"updatedAt\": \"2024-07-01T09:37:12.134Z\",\n            \"deletedAt\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "one transaction by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"  pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field 'message'\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the response body is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object').and.to.not.be.empty;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "cf6f3bb0-87cf-4b52-bc33-a149278487fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://mvp-wallet-service.onrender.com/transaction/120d497e-19ab-4acb-af07-1dc5fabc738b"
+					},
+					"response": [
+						{
+							"id": "e7482383-75a3-4431-850e-696656d3bf16",
+							"name": "one transaction by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/transaction/120d497e-19ab-4acb-af07-1dc5fabc738b"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:32:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23cd6a6de4bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"143-gmhWs4p/dj3VReuqjxCjlL4hugY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "7fd6625f-505d-4032"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got one!\",\n    \"transaction\": {\n        \"id\": \"120d497e-19ab-4acb-af07-1dc5fabc738b\",\n        \"amount\": 10,\n        \"transactionType\": \"credit\",\n        \"senderAccountNumber\": \"1231231234\",\n        \"recipientAccountNumber\": \"6710555292\",\n        \"date\": \"2024-07-01T00:48:10.000Z\",\n        \"createdAt\": \"2024-07-01T00:48:10.290Z\",\n        \"updatedAt\": \"2024-07-01T01:03:32.057Z\",\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "fund wallet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response must have the required Content-Type header with value application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message length should be within expected limit\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.exist.and.to.have.lengthOf.at.most(255, \"Message should be within 255 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "98bbc513-736d-4b2b-95aa-2ee53eea2f6e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 20000,\n  \"recipientAccountNumber\": \"2699892220\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/transaction/fund"
+					},
+					"response": [
+						{
+							"id": "be70a685-1543-4d24-84c9-e1c0e287a4d0",
+							"name": "fund wallet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 20,\n  \"recipientAccountNumber\": \"6710555292\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/transaction/fund"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:35:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23d1b02839bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-X9ncmZQ4kd5YqqRXT5EJJhA91e0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "93c74e05-deea-43a2"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Williams funded successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Withdraw",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field 'message'\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData).to.have.property('message');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify the response message\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "1c3a70ba-3031-4b45-84e1-8bf697905fb7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 800,\n  \"senderAccountNumber\": \"2699892220\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/transaction/withdraw"
+					},
+					"response": [
+						{
+							"id": "3c4b04d4-7bf1-4ade-88f3-b80345326540",
+							"name": "Withdraw",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 20,\n  \"senderAccountNumber\": \"6710555292\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/transaction/withdraw"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-5QTMFwTAZaNHsOtCqSOJIHQYTic\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 21:30:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Williams made withdrawal of #20 successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer P2P",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required Content-Type header with value application/json\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is present in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "139db4fc-dbc2-44dd-832c-01424c930d0c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 50,\n  \"senderAccountNumber\": \"2699892220\",\n  \"recipientAccountNumber\": \"6710555292\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/transaction/transfer"
+					},
+					"response": [
+						{
+							"id": "78b2dc20-116f-4f87-a004-cc83411aefe0",
+							"name": "Transfer P2P",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 20,\n  \"senderAccountNumber\": \"1231231234\",\n  \"recipientAccountNumber\": \"6710555292\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/transaction/transfer"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 21:32:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a24256e5a08bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-kBwsqrwCDmWmAUjOuAgVmHUZRpc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "3108d2cf-8ee6-4927"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Smart successfully transferred #20 to Williams\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete transaction by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is as expected for successful transaction deletion\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "7f3bc479-f1d8-4f85-a2ab-0f3e524dca4c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 20,\n  \"senderAccountNumber\": \"1231231234\",\n  \"recipientAccountNumber\": \"6710555292\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/transaction/1d0917a2-95e1-42c5-8da4-31e6ec893abf"
+					},
+					"response": [
+						{
+							"id": "12241b4e-7981-4845-bc75-b63efbc41f6f",
+							"name": "Transfer P2P",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 20,\n  \"senderAccountNumber\": \"1231231234\",\n  \"recipientAccountNumber\": \"6710555292\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/transaction/transfer"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 21:32:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a24256e5a08bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-kBwsqrwCDmWmAUjOuAgVmHUZRpc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "3108d2cf-8ee6-4927"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Smart successfully transferred #20 to Williams\"\n}"
+						}
+					]
+				}
+			],
+			"id": "de40a9b1-34d7-4132-b954-e0355df95db0"
+		},
+		{
+			"name": "Home",
+			"id": "7919113d-4c41-48e0-876e-9aa87f2d9e23",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://mvp-wallet-service.onrender.com"
+			},
+			"response": []
+		},
+		{
+			"name": "Home Copy",
+			"id": "5bf80368-ae9f-4788-825f-5ae6b3dddf8d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://mvp-wallet-service.onrender.com"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "fb09a1bf-b733-4116-8e37-2775fd84f628",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
