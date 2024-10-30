@@ -256,7 +256,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://mvp-wallet-service.onrender.com/users"
+						"url": "https://mvp-wallet-service.onrender.com/user"
 					},
 					"response": [
 						{
