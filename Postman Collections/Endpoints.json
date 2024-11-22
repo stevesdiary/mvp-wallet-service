@@ -14,6 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "ff8aecea-f95d-4530-ab4f-0864a8532f34",
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"  pm.expect(pm.response.code).to.equal(201);",
@@ -53,7 +54,8 @@
 									"  pm.expect(responseData.user.accountNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Account number should not be empty\");",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -66,14 +68,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"Ade\",\n  \"email\": \"adeola@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+							"raw": "{\n  \"name\": \"Adebimpe Abass\",\n  \"username\": \"bimpe_fire\",\n  \"email\": \"bimmmy@email.com\",\n  \"password\": \"password231@#\",\n  \"confirm_password\": \"password231@#\",\n  \"gender\": \"female\",\n  \"userType\": \"user\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "https://mvp-wallet-service.onrender.com/user"
+						"url": "localhost:777/user"
 					},
 					"response": [
 						{
