@@ -171,7 +171,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://mvp-wallet-service.onrender.com/user/02db13a3-2c82-4d7c-98b8-eead019c7e46"
+						"url": "localhost:5500/user/getone/"
 					},
 					"response": [
 						{
@@ -258,7 +258,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://mvp-wallet-service.onrender.com/user"
+						"url": "localhost:5500/user/getall"
 					},
 					"response": [
 						{
@@ -489,7 +489,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "https://mvp-wallet-service.onrender.com/user/5f190cb1-6ec3-4b0a-a605-91e2b54f93d0"
+						"url": "localhost:5500/user/delete/"
 					},
 					"response": [
 						{
