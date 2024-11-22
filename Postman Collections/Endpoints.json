@@ -68,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Adebimpe Abass\",\n  \"username\": \"bimpe1\",\n  \"email\": \"bimmmy@email.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"gender\": \"female\",\n  \"userType\": \"user\",\n  \"subscribed\": false\n}",
+							"raw": "{\n  \"name\": \"Adebimpe Abass\",\n  \"username\": \"bimpe1\",\n  \"email\": \"bimmmy@email.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"gender\": \"female\",\n  \"type\": \"user\",\n  \"subscribed\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
