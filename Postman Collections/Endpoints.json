@@ -68,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Abiodun Abass\",\n  \"username\": \"abbey\",\n  \"email\": \"abbey@email.com\",\n  \"profile_picture\": \"randompics.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2010\",\n  \"gender\": \"Male\",\n  \"type\": \"user\",\n  \"subscribed\": false\n}",
+							"raw": "{\n  \"name\": \"Abiodun Abass\",\n  \"username\": \"abbey\",\n  \"email\": \"abbey@email.com\",\n  \"profile_picture\": \"randompics.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2010\",\n  \"gender\": \"male\",\n  \"type\": \"user\",\n  \"subscribed\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
