@@ -1776,7 +1776,7 @@
 			"response": []
 		},
 		{
-			"name": "Home Copy",
+			"name": "Home LOCAL",
 			"id": "fd9c46df-170c-4b64-8c13-054ce1b5ad1c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -1785,19 +1785,6 @@
 				"method": "GET",
 				"header": [],
 				"url": "https://educonnect-fcje.onrender.com"
-			},
-			"response": []
-		},
-		{
-			"name": "Home Copy",
-			"id": "5bf80368-ae9f-4788-825f-5ae6b3dddf8d",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://mvp-wallet-service.onrender.com"
 			},
 			"response": []
 		},
