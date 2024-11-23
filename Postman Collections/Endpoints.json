@@ -1771,7 +1771,20 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://mvp-wallet-service.onrender.com"
+				"url": "https://educonnect-fcje.onrender.com"
+			},
+			"response": []
+		},
+		{
+			"name": "Home Copy",
+			"id": "fd9c46df-170c-4b64-8c13-054ce1b5ad1c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://educonnect-fcje.onrender.com"
 			},
 			"response": []
 		},
