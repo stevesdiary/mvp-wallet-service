@@ -1799,6 +1799,28 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "538bd0f6-7df0-4f5c-8f9c-d4d2fdbfcb9a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"How to optimize SQL queries?\",\n  \"content\": \"I need advice on optimizing SQL queries for better performance.\",\n  \"subject\": \"SQL\",\n  \"file_url\": \"http://example.com/file.pdf\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:5500/question/create"
+			},
+			"response": []
 		}
 	]
 }
