@@ -891,7 +891,7 @@
 								}
 							}
 						},
-						"url": "localhost:5500/user/login"
+						"url": "localhost:5500/login"
 					},
 					"response": []
 				}
