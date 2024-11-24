@@ -872,6 +872,18 @@
 						"url": "localhost:777/login"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "3e571e1d-92d8-48b1-b854-78fa05220d52",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "6ec0ccbd-264b-4d7a-b7ce-6e0d49b31eaf"
