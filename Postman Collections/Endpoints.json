@@ -862,14 +862,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"adeola1@email.com\",\n  \"password\": \"password\"\n}",
+							"raw": "{\n  \"title\": \"Stoichiometry\",\n  \"subject_id\": \"1\",\n  \"content\": \"How can I calculate the mass number?\",\n  \"image_url\": \"https://example.com/file.pdf\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:777/login"
+						"url": "localhost:5100/question/create"
 					},
 					"response": []
 				},
