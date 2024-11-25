@@ -68,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Williams Philemon\",\n  \"username\": \"willyyphily\",\n  \"email\": \"willyphily@email.com\",\n  \"profile_picture\": \"randompics.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\",\n  \"gender\": \"MALE\",\n  \"type\": \"user\",\n  \"subscribed\": false\n}",
+							"raw": "{\n  \"name\": \"Williams Philemon\",\n  \"username\": \"willyyphily\",\n  \"email\": \"willyphily@email.com\",\n  \"profile_picture\": \"randompics.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\",\n  \"gender\": \"MALE\",\n  \"subscribed\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
