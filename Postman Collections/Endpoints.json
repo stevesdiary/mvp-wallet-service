@@ -258,7 +258,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:5500/user/allusers"
+						"url": "localhost:5100/user/allusers"
 					},
 					"response": [
 						{
