@@ -872,6 +872,28 @@
 						"url": "localhost:777/login"
 					},
 					"response": []
+				},
+				{
+					"name": "login",
+					"id": "4873c0d6-52a1-48ee-bbae-ebb5ade48632",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"stevesdiary@email.com\",\n  \"password\": \"PAssword231@#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/log/login"
+					},
+					"response": []
 				}
 			],
 			"id": "6ec0ccbd-264b-4d7a-b7ce-6e0d49b31eaf"
