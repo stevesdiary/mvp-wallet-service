@@ -852,7 +852,7 @@
 					]
 				},
 				{
-					"name": "New Request",
+					"name": "create question",
 					"id": "63bb9cee-9248-424d-b324-635cfe15a17f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -870,28 +870,6 @@
 							}
 						},
 						"url": "localhost:777/login"
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"id": "3e571e1d-92d8-48b1-b854-78fa05220d52",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"willyphily@email.com\",\n  \"password\": \"PAssword231@#\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "localhost:5100/login"
 					},
 					"response": []
 				}
