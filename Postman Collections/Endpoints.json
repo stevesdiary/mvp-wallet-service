@@ -957,7 +957,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \n}",
+					"raw": "{\n  \"name\": \"Stephen\",\n  \"username\": \"stevesdiary\",\n  \"email\": \"stevesdiary@email.com\",\n  \"profile_picture\": \"htps://examplefileurl.com\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
