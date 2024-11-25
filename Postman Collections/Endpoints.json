@@ -947,7 +947,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Update user",
 			"id": "fb09a1bf-b733-4116-8e37-2775fd84f628",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
