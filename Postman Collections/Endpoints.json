@@ -489,7 +489,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:5500/user/delete/"
+						"url": "localhost:5100/user/delete/1"
 					},
 					"response": [
 						{
