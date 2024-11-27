@@ -969,7 +969,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Create question",
 			"id": "538bd0f6-7df0-4f5c-8f9c-d4d2fdbfcb9a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
