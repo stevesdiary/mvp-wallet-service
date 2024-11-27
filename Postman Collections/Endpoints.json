@@ -923,21 +923,21 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjkwOTcsImV4cCI6MTczMjczMjY5N30.RESQx5_psU9AUVxIOszLuDDruk0G3uWzGDsZUpeF6Bc"
 							}
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Chemistry\"\n}",
+							"raw": "{\n  \"content\": \"To calculate the massnumber, you need to know the atomic number\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:5100/subject/create"
+						"url": "localhost:5100/answer/create/1"
 					},
 					"response": []
 				},
