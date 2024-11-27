@@ -64,11 +64,17 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI1NDIyMjksImV4cCI6MTczMjU0NTgyOX0.WZp6UsKxOkoVAa6Ve6qa5F5dPtcKXPrH4sLQ9qMIGy8"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Williams Philemon\",\n  \"username\": \"willyyphily\",\n  \"email\": \"willyphily@email.com\",\n  \"profile_picture\": \"htps://example.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\",\n  \"gender\": \"MALE\",\n  \"subscribed\": false\n}",
+							"raw": "{\n  \"name\": \"Stephen\",\n  \"username\": \"stevesdiary\",\n  \"email\": \"stevesdiary@email.com\",\n  \"profile_picture\": \"htps://example.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\",\n  \"gender\": \"MALE\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
