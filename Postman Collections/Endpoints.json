@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "User",
+			"name": "User LOCAL",
 			"item": [
 				{
 					"name": "Create user",
@@ -993,6 +993,995 @@
 				}
 			],
 			"id": "6ec0ccbd-264b-4d7a-b7ce-6e0d49b31eaf"
+		},
+		{
+			"name": "User Hosted",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ff8aecea-f95d-4530-ab4f-0864a8532f34",
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.user).to.be.an('object');",
+									"    pm.expect(responseData.user.firstName).to.exist;",
+									"    pm.expect(responseData.user.email).to.exist;",
+									"    pm.expect(responseData.user.userType).to.exist;",
+									"    pm.expect(responseData.user.password).to.exist;",
+									"    pm.expect(responseData.user.accountNumber).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.user.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.user.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Account number is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.user.accountNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Account number should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "738491c3-9052-457b-ba7a-0de3742f0b82",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI1NDIyMjksImV4cCI6MTczMjU0NTgyOX0.WZp6UsKxOkoVAa6Ve6qa5F5dPtcKXPrH4sLQ9qMIGy8"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Stephen\",\n  \"username\": \"stevesdiary\",\n  \"email\": \"stevesdiary@email.com\",\n  \"profile_picture\": \"htps://example.com\",\n  \"password\": \"PAssword231@#\",\n  \"confirm_password\": \"PAssword231@#\",\n  \"phone_number\": \"08077665544\",\n  \"birthdate\": \"12-08-2008\",\n  \"gender\": \"MALE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://educonnect-fcje.onrender.com/user/create"
+					},
+					"response": [
+						{
+							"id": "2504c386-43c0-46fa-ba5c-9cbfd057e8b9",
+							"name": "Create user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Adejare\",\n  \"email\": \"dayoade@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:22:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "200"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23be7c6d7fbf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce-or3Clp+Dqspbv8jW5dhiX3L1Tm0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "6babd0e4-3c81-4db6"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"User created\",\n    \"user\": {\n        \"firstName\": \"Adejare\",\n        \"email\": \"dayoade@email.com\",\n        \"userType\": \"user\",\n        \"password\": \"$2a$10$OPoWSZaQYr0xylXmIvVq5.bqGamFykby7jwiflavrWq2SwbNylUzi\",\n        \"accountNumber\": \"3554621010\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "One user by ID",
+					"id": "56d15b53-4439-4458-a9eb-0ee30d365c8c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:5500/user/getone/b41b0ed1-f46c-45eb-9ab2-666e16288aca"
+					},
+					"response": [
+						{
+							"id": "66b6afc2-eba5-4cad-9468-b2d708654696",
+							"name": "One user by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user/006eaf94-3355-48a2-9971-e7e10089ffbe"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:18:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23b984df56bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b8-IfiAKKS0lFRzIGHGNjGQ2y9SqIA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "0e73af33-1f85-4a5b"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got one!\",\n    \"user\": {\n        \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n        \"firstName\": \"Adejare\",\n        \"email\": \"dayoade@email.com\",\n        \"userType\": \"user\",\n        \"balance\": 0,\n        \"accountNumber\": \"2728851350\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "All users",
+					"id": "0beb6525-d42a-4a33-9250-4c7f2912aee8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:5100/user/allusers"
+					},
+					"response": [
+						{
+							"id": "5cd6c38c-fa79-4348-8901-d7a6c05fb75e",
+							"name": "One user by ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:18:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "607"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23b88d4aa0bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"639-BB6Tdf3B93y8tVf4aCvaB9wBBe8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "6431a85d-3689-4ed5"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Got users\",\n    \"allUser\": [\n        {\n            \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"dayoade@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"2728851350\"\n        },\n        {\n            \"id\": \"17df9d3b-391f-4f80-a9f4-2825adfa9fa1\",\n            \"firstName\": \"Smart\",\n            \"email\": \"test@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 4752,\n            \"accountNumber\": \"1231231234\"\n        },\n        {\n            \"id\": \"493606ad-af23-44e9-9bc1-e87d691a6154\",\n            \"firstName\": \"Williams\",\n            \"email\": \"test31@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 290,\n            \"accountNumber\": \"6710555292\"\n        },\n        {\n            \"id\": \"5f190cb1-6ec3-4b0a-a605-91e2b54f93d0\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"aeadingtonj@ustream.tv\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"9122016198\"\n        },\n        {\n            \"id\": \"9286f813-c5e3-401c-b797-f5e79ae8b086\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"Warren_Hermann49@example.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"7997295079\"\n        },\n        {\n            \"id\": \"b3fd9d20-87c1-406d-b804-5d012574f041\",\n            \"firstName\": \"Sunday\",\n            \"email\": \"test2@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 178,\n            \"accountNumber\": \"2282772391\"\n        },\n        {\n            \"id\": \"bc2f9cf5-f60c-429a-b3e5-29c029c93633\",\n            \"firstName\": \"Samuel\",\n            \"email\": \"test3@email.com\",\n            \"userType\": \"admin\",\n            \"balance\": 0,\n            \"accountNumber\": \"9767633301\"\n        },\n        {\n            \"id\": \"d0d130e5-0b7d-4af2-a1ff-bb9107bbd17a\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"mrosa0@go.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"0070687672\"\n        },\n        {\n            \"id\": \"d271a8e4-8798-43b5-99b9-1713b506cf35\",\n            \"firstName\": \"Adejare\",\n            \"email\": \"adejare@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"3037054113\"\n        },\n        {\n            \"id\": \"e52a67ac-1048-4dfa-9670-61071ac2bcf4\",\n            \"firstName\": \"Sunny\",\n            \"email\": \"sunny@email.com\",\n            \"userType\": \"user\",\n            \"balance\": 0,\n            \"accountNumber\": \"8807530538\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field - message\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property('message');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field format is valid\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.message).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Ensure that the response body is not empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData).to.not.be.empty;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "051072d1-6fa4-4d92-ac2c-d86275c90dd0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Samuel\",\n  \"email\": \"sammy@email.com\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/user/c9810a5b-15a3-43b3-9231-994082395e38"
+					},
+					"response": [
+						{
+							"id": "210c680b-acce-4e56-ab47-f40082e9d578",
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Adejare\",\n  \"email\": \"Bridgette.Lowe26@example.org\",\n  \"password\": \"password\",\n  \"userType\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user/006eaf94-3355-48a2-9971-e7e10089ffbe"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:20:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23bc18f888bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-M7NWSSEulcK9y/NhbLM3aMzPYbk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "ff274856-4a0d-4eb8"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"User data updated\",\n    \"user\": {\n        \"id\": \"006eaf94-3355-48a2-9971-e7e10089ffbe\",\n        \"firstName\": \"Adejare\",\n        \"email\": \"Bridgette.Lowe26@example.org\",\n        \"userType\": \"user\",\n        \"balance\": 0,\n        \"accountNumber\": \"0506216742\",\n        \"password\": \"$2a$10$N8T6fSrWO5RQpK.gLu9pN.Sv0mDf52KBKTZ.zcLRQ30PjQ0WoSRVS\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete by ID",
+					"id": "b06531e4-5cab-40e3-8e62-7f827b979fe5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:5100/user/delete/1"
+					},
+					"response": [
+						{
+							"id": "95568d0d-b900-4e20-8bd8-1a0df5e69168",
+							"name": "Delete by ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://mvp-wallet-service.onrender.com/user/c3f87a33-ac85-4dc4-911c-9f07cf167211"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 12 Jul 2024 20:20:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a23bcafd8b0bf0f-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-us2dDQ8uYUhKd54WoDEgZNWpdX4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "00fc6d37-0639-496d"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Record deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add user to blacklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - email and id\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('email');",
+									"  pm.expect(responseData).to.have.property('id');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid email format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "710fd2dd-e21a-4d7d-9a39-91cbd9ed099f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ngozi1@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://667c1dfd3c30891b865b6308.mockapi.io/emails"
+					},
+					"response": [
+						{
+							"id": "46b55ffd-cc7f-4310-9923-de768bcfdbbd",
+							"name": "http://localhost:5000/getonebytitle",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"walllio@email.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://667c1dfd3c30891b865b6308.mockapi.io/emails"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1720891265&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=AiiNoORRga32rEqfS72MHtFaou0hST2StGE8lRfANL0%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1720891265&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=AiiNoORRga32rEqfS72MHtFaou0hST2StGE8lRfANL0%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET,PUT,POST,DELETE,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With,Content-Type,Cache-Control,access_token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jul 2024 17:21:05 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"email\": \"walllio@email.com\",\n    \"id\": \"57\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove user email from blacklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field should not be empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "641c5424-5ab3-4df8-b724-d45e70226984",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://mvp-wallet-service.onrender.com/user/removeblacklist/19"
+					},
+					"response": [
+						{
+							"id": "d555b533-e51b-42c5-86dc-b1b89246688c",
+							"name": "remove user form blacklist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://mvp-wallet-service.onrender.com/user/removeblacklist/35"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jul 2024 17:18:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "8a2aeecf1fff642d-LHR"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-A89pAplKtugqkLT3f0a+uhH30nM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "rndr-id",
+									"value": "e56a8162-211c-4980"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "Render"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Email successfully removed from blacklist\"\n}"
+						}
+					]
+				},
+				{
+					"name": "create question",
+					"id": "50aff769-467d-4000-8de6-f87117d5644e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Stoichiometry\",\n  \"subject\": \"Chemistry\",\n  \"content\": \"How can I calculate the mass number?\",\n  \"image_url\": \"https://example.com/file.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/question/create"
+					},
+					"response": []
+				},
+				{
+					"name": "create subject",
+					"id": "2026fed7-a68b-4eff-b08a-88e7c09c53f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Chemistry\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/subject/create"
+					},
+					"response": []
+				},
+				{
+					"name": "create answer",
+					"id": "f6f0f07f-5ca5-49ec-a6f0-6d600da87f7f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjkwOTcsImV4cCI6MTczMjczMjY5N30.RESQx5_psU9AUVxIOszLuDDruk0G3uWzGDsZUpeF6Bc"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"To calculate the mass number, you need to know the atomic number\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/answer/create/1"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"id": "fa0f2fc0-f9e0-4a96-803d-10ffbb5c409c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBZG1pbkluZm8iOnsiYWRtaW5faWQiOiIxZTBkNjVkMy1jNjdiLTRlNTMtYjgwNi05YjY5MGE4ZGRmODAiLCJlbWFpbCI6InN0ZXZlam95QGVtYWlsLmNvbSIsInJvbGUiOiJtYXN0ZXIifSwiZXhwIjoxNzI4MzU5Nzk3LCJpYXQiOjE3MjgzMjM4MDF9.BJQFB61vAn9fG2NwoNGHB5q9CVCKF4r2VCGfZWakc7U"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"stevesdiary@email.com\",\n  \"password\": \"PAssword231@#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"id": "1f665ca2-6498-4fc9-8531-4d2d2532469f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"stevesdiary@email.com\",\n  \"password\": \"PAssword231@#\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/user/logout"
+					},
+					"response": []
+				}
+			],
+			"id": "8cfa2ebd-640f-4d9f-8b63-8270ae2990a7"
 		},
 		{
 			"name": "Home",
