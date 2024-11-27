@@ -858,6 +858,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -880,6 +886,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBZG1pbkluZm8iOnsiYWRtaW5faWQiOiIxZTBkNjVkMy1jNjdiLTRlNTMtYjgwNi05YjY5MGE4ZGRmODAiLCJlbWFpbCI6InN0ZXZlam95QGVtYWlsLmNvbSIsInJvbGUiOiJtYXN0ZXIifSwiZXhwIjoxNzI4MzU5Nzk3LCJpYXQiOjE3MjgzMjM4MDF9.BJQFB61vAn9fG2NwoNGHB5q9CVCKF4r2VCGfZWakc7U"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
