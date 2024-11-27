@@ -1954,7 +1954,7 @@
 								}
 							}
 						},
-						"url": "localhost:5100/user/login"
+						"url": "https://educonnect-fcje.onrender.com/user/login"
 					},
 					"response": []
 				},
