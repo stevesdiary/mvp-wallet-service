@@ -914,6 +914,34 @@
 					"response": []
 				},
 				{
+					"name": "create subject Copy",
+					"id": "2454ff65-0b9b-416f-9ffb-750e2a9c6df2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Chemistry\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/subject/create"
+					},
+					"response": []
+				},
+				{
 					"name": "login",
 					"id": "4873c0d6-52a1-48ee-bbae-ebb5ade48632",
 					"protocolProfileBehavior": {
