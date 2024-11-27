@@ -896,14 +896,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"Stoichiometry\",\n  \"subject_id\": \"1\",\n  \"content\": \"How can I calculate the mass number?\",\n  \"image_url\": \"https://example.com/file.pdf\"\n}",
+							"raw": "{\n  \"name\": \"Chemistry\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:5100/question/create"
+						"url": "localhost:5100/subject/create"
 					},
 					"response": []
 				},
