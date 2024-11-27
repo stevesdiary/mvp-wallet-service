@@ -880,6 +880,34 @@
 					"response": []
 				},
 				{
+					"name": "create subject",
+					"id": "07f29990-347b-428a-9d3f-4a1f9d349e26",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzdGV2ZXNkaWFyeUBlbWFpbC5jb20iLCJpYXQiOjE3MzI3MjA5NjcsImV4cCI6MTczMjcyNDU2N30.TOuhe8o4413uSn2XQlB5VsGkw03FXkma_IM_7B8qx_M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Stoichiometry\",\n  \"subject_id\": \"1\",\n  \"content\": \"How can I calculate the mass number?\",\n  \"image_url\": \"https://example.com/file.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:5100/question/create"
+					},
+					"response": []
+				},
+				{
 					"name": "login",
 					"id": "4873c0d6-52a1-48ee-bbae-ebb5ade48632",
 					"protocolProfileBehavior": {
