@@ -930,7 +930,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"content\": \"To calculate the massnumber, you need to know the atomic number\"\n}",
+							"raw": "{\n  \"content\": \"To calculate the mass number, you need to know the atomic number\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
