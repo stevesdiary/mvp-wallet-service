@@ -1337,6 +1337,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "12415b64-121b-40d8-81b8-d2a6f4630764",
 								"exec": [
 									"pm.test(\"Response status code is 404\", function () {",
 									"    pm.expect(pm.response.code).to.equal(404);",
@@ -1368,7 +1369,8 @@
 									"  pm.expect(responseData).to.not.be.empty;",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1388,7 +1390,7 @@
 								}
 							}
 						},
-						"url": "https://mvp-wallet-service.onrender.com/user/c9810a5b-15a3-43b3-9231-994082395e38"
+						"url": "https://educonnect-fcje.onrender.com/user/c9810a5b-15a3-43b3-9231-994082395e38"
 					},
 					"response": [
 						{
@@ -1484,7 +1486,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:5100/user/delete/1"
+						"url": "https://educonnect-fcje.onrender.com/user/delete/1"
 					},
 					"response": [
 						{
@@ -1710,6 +1712,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "36c02513-ec49-4d72-b155-525b525a0053",
 								"exec": [
 									"pm.test(\"Response status code is 200\", function () {",
 									"    pm.expect(pm.response.code).to.equal(200);",
@@ -1739,7 +1742,8 @@
 									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1759,7 +1763,7 @@
 								}
 							}
 						},
-						"url": "https://mvp-wallet-service.onrender.com/user/removeblacklist/19"
+						"url": "https://educonnect-fcje.onrender.com/user/removeblacklist/19"
 					},
 					"response": [
 						{
