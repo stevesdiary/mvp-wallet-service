@@ -1902,7 +1902,7 @@
 								}
 							}
 						},
-						"url": "localhost:5100/subject/create"
+						"url": "https://educonnect-fcje.onrender.com/subject/create"
 					},
 					"response": []
 				},
@@ -1930,7 +1930,7 @@
 								}
 							}
 						},
-						"url": "localhost:5100/answer/create/1"
+						"url": "https://educonnect-fcje.onrender.com/answer/create/1"
 					},
 					"response": []
 				},
@@ -1980,7 +1980,7 @@
 								}
 							}
 						},
-						"url": "localhost:5100/user/logout"
+						"url": "https://educonnect-fcje.onrender.com/user/logout"
 					},
 					"response": []
 				}
@@ -2007,9 +2007,18 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
-				"url": "localhost:5100/user/all"
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\":\"\",\n  \"password\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://educonnect-fcje.onrender.com/user/login"
 			},
 			"response": []
 		},
@@ -2031,7 +2040,7 @@
 						}
 					}
 				},
-				"url": "localhost:5100/user/update/2"
+				"url": "https://educonnect-fcje.onrender.com/user/update/2"
 			},
 			"response": []
 		},
