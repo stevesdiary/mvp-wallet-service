@@ -1166,7 +1166,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:5500/user/getone/b41b0ed1-f46c-45eb-9ab2-666e16288aca"
+						"url": "https://educonnect-fcje.onrender.com/user/getone/b41b0ed1-f46c-45eb-9ab2-666e16288aca"
 					},
 					"response": [
 						{
