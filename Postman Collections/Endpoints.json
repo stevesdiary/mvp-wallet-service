@@ -1253,7 +1253,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:5100/user/allusers"
+						"url": "https://educonnect-fcje.onrender.com/user/allusers"
 					},
 					"response": [
 						{
