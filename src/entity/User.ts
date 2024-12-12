@@ -1,48 +1,34 @@
-import { IsAlphanumeric, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-// import { Transaction } from "./Transaction";
+const { IsAlphanumeric, IsEmail, IsNotEmpty, IsNumber, IsString } = require("class-validator");
 
-@Entity()
-export class User {
-    @PrimaryGeneratedColumn('uuid')
+class User {
     id: string;
 
-    @Column()
     @IsString()
     @IsNotEmpty()
     firstName: string;
 
-    @Column()
     @IsString()
     @IsNotEmpty()
     lastName: string;
 
-    @Column({ unique: true })
     @IsEmail()
     @IsNotEmpty()
     email: string;
 
-    @Column()
     @IsString()
     @IsNotEmpty()
     userType: string;
 
-    @Column({ nullable: false })
     @IsAlphanumeric()
     password: string;
 
-    @Column({ nullable: false, default: 0 })
     @IsNumber()
     balance: number;
 
-    @Column({ nullable: false, unique: true })
     @IsNotEmpty()
     accountNumber: string;
 
-    userRepository: any; // Consider specifying a more precise type
-
-    // @OneToMany(() => Transaction, (transaction) => transaction.user)
-    // transaction: Transaction[];
+    userRepository: any; // Specify type if possible
 }
 
-export default User;
+module.exports = User;

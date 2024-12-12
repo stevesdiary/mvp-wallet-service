@@ -1,6 +1,6 @@
 import AppDataSource from "../data-source";
 import { Transaction } from "../entity/Transaction";
-import { User } from "../entity/User";
+// import { User } from "../entity/User";
 import { Request, Response } from "express";
 
 const transactionRepository = AppDataSource.getRepository(Transaction);

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne } from "typeorm"
-import { User } from "./User"
+// import { User } from "./User"
 @Entity()
 export class Transaction {
 

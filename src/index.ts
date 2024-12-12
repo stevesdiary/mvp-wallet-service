@@ -29,7 +29,7 @@ app.get("/", (req:Request, res: Response) => {
 
 
 const port = process.env.LOCAL_PORT || 8888;
-console.log("Port", port, "And Host", process.env.DB_USERNAME);
+// console.log("Port", port, "And Host", process.env.DB_USERNAME);
 dataSource.initialize().then(async () => {
 	app.listen(port, () => {
 		console.log("Database connected successfully!");
