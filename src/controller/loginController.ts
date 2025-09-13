@@ -14,9 +14,8 @@ const loginController = {
         return res.status( 200 ).send({message: "User not found"}); 
       }
       if (!match) {
-        return res.status(400).send({ message: 'Password is not correct! Enter a valid password'};
+        return res.status(400).send({ message: 'Password is not correct! Enter a valid password'});
       }
-       
     } catch (error) {
       console.log(error);
       return res.status(500).send( {message: 'an error ocurred', error} )
