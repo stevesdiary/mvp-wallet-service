@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
-import bcrypt from 'bcrypt.js';
+import bcrypt from 'bcryptjs';
 
 const userRepository  = AppDataSource.manager.getRepository(User);
 const loginController = {
